@@ -1,0 +1,105 @@
+DORAU5
+
+Jegyzőkönyv - Programozás Alapjai 2 - Labor 1
+
+rendszer: MacOS Sonoma 14.2.1.
+terminál: iTerm
+szerkesztő: nvim (+lazyvim)
+
+
+1. feladat )
+feladat: ‘home’ könyvtár megtalálása. (pwd)
+
+tapasztalat: A terminálba a ‘pwd’ parancs futtatása után megjelenik a ‘home’ könyvtár címe.
+	bemenet: $ pwd
+	kimenet: $ /Users/lorinc
+
+
+2. feladat )
+feladat: c++ program készítése (‘main.cpp’) vim használatával.
+
+tapasztalat: Az ‘nvim  main.cpp’ hatására a rendszer elkészíti az általunk megadott fájl-t és ezt a neovim szerkesztővel megnyitja. Az ‘i’ betű lenyomása engedélyezi a fájl-ba való írást (szerkesztési mód). A kód begépelése után az ‘esc’ lenyomása zárja a szerkesztési módot, parancsokat adhatunk meg. A wq (write, quit) menti a fájl-t és bezárja a neovim szerkesztőt.
+
+
+3. feladat )
+feladat: ‘g++ —help’  parancs kimenetének vizsgálata
+
+tapasztalat: A parancs futtatása után a kimenet elképesztően hosszú. 
+A leggyakrabban használt kapcsolók: 
+-o <file> 		(kimeneti fájl megadása)
+-c 	   		(csak fordítás, ne linkelés)
+-std=<standard>	(c++ szabvány megadása. pl ‘-std=c++11’)
+…
+
+
+4. feladat )
+feladat: ‘g++ -E main.cpp’ parancs futtatása.
+
+tapasztalat: A terminálban megjelenik a main.cpp fájl egy átalakított verziója. Az importált könyvtárat (<iostream>) behelyettesíti a fájl-ba.
+
+
+5. feladat )
+feladat: kódrészlet beillesztése és mentése (gy.cpp) és vizsgálata.
+
+tapasztalat: Ha az előző feladatból használt parancsot alkalmazzuk a fájl-ra akkor a kimeneten láthatjuk, hogy az ‘alma’, ‘körte’, ‘szilva’ szavakat a fordító lecséréli a megadott számértékekre.
+
+bemenet:   $ g++ -E gy.cpp
+kimenet:     $ # 1 "main.cpp"
+		# 1 "<built-in>" 1
+		# 1 "<built-in>" 3
+		# 433 "<built-in>" 3
+		# 1 "<command line>" 1
+		# 1 "<built-in>" 2
+		# 1 "main.cpp" 2
+
+		0,1,1,2,0,0 ...
+
+6. feladat )
+feladat: kódrészlet beillesztése a megfelelő fájl-ba (main2.cpp, foo.cpp).
+
+tapasztalat: A fájl-ok elkészítése, majd fordítása után létrejön a fájl elnevezésével megegyező, ‘.o’ kiterjesztésű fájl.
+
+
+7. feladat )
+feladat: ‘g++ main2.o foo.o -o main2’ és './main2’ parancs futtatása.
+
+tapasztalat: A ‘main2’ fájl futása után a kimenet ‘Hello’. A ‘.o’ fájlok összekapcsolásának oka a main2.cpp-ben található ‘foo’ függvény hivása.
+
+
+8. feladat )
+feladat: ‘main3.cpp’ fájl elkészítése és kódrészlet bemásolása.
+
+- include-guard fontossága, működési elve -
+
+
+9. feladat )
+feladat: ‘g++ -E main3.cpp’ parancs futtatása és vizsgálata.
+
+tapasztalat: A kimenet ‘main3.cpp:1:10: fatal error: 'bar.h' file not found’ 
+
+
+10. feladat )
+feladat: ‘warnings.cpp’ fájl létrehozása és 'g++ -Wall -o warnings warnings.cpp’ parancs futtatása.
+
+tapasztalat: A kimenet kiemeli a fordított fájl-ban ejtett olyan hibákra, amik a futtatást nem gátolják. Kimenet: ‘variable 'a' is uninitialized when used here’.
+
+
+11. feladat )
+feladat: ‘-g, -Werror és -O0’ kapcsolók magyarázata.
+
+-g: 		debug
+-Werror: 	figyelmeztetéseket (warnings) hibákká (errors) konvertálja
+-o0:		optimalizálás kikapcsolása
+
+
+12. - 13. feladat)
+feladat: ‘auto.cpp’ fájl létrehozása és kódrészlet bemásolása, majd különböző standard-ú g++ beállításokkal való futtatása.
+
+tapasztalat:
+c++98: Az ‘auto’ típus is c++11 kompatibilis típus.
+c++3: Az ‘auto’ típus is c++11 kompatibilis típus.
+c++11: Nincs fordítása hiba.
+c++14: Nincs fordítása hiba.
+
+
+
